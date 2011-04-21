@@ -1,0 +1,232 @@
+# Global snippets
+
+# (c) holds no legal value ;)
+snippet c)
+	`&enc[:2] == "utf" ? "©" : "(c)"` Copyright `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.${2}
+snippet date
+	`strftime("%Y/%m/%d")`
+snippet date-
+	`strftime("%Y-%m-%d")`
+snippet time
+	`strftime("%Y/%m/%d %H:%M:%S")`
+snippet time-
+	`strftime("%Y-%m-%d %H:%M:%S")`
+snippet week
+	`strftime("%A")`
+
+#{{{/////////////////////////////////////////asp Begin########################################
+snippet .res
+	response.write ${1}
+snippet .resEnd
+	response.write ${1}
+	response.end${2}
+snippet .include
+	<!--#include file="${1}"-->
+#}}}
+
+#//////////////////////////////////////////HTML Begin######################################
+snippet nbs
+	&nbsp;
+snippet doct5
+	<!DOCTYPE HTML>
+snippet html
+	<html>
+		${1}
+	</html>
+snippet xhtml
+	<html xmlns="http://www.w3.org/1999/xhtml">
+		${1}
+	</html>
+snippet body
+	<body>
+		${1}
+	</body>
+snippet head
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
+
+		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
+		${2}
+	</head>
+snippet title
+	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
+snippet script
+	<script type="text/javascript" charset="utf-8">
+		${1}
+	</script>${2}
+snippet scriptsrc
+	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
+snippet style
+	<style type="text/css" media="${1:screen}">
+		${2}
+	</style>${3}
+snippet r
+	<br`Close()[1:]`>
+snippet div
+	<div id="${1:name}">
+		${2}
+	</div>
+snippet span
+	<span id="${1:name}">
+		${2}
+	</span>
+snippet fieldset
+	<fieldset id="$1">
+		<legend>${1:name}</legend>
+
+		${3}
+	</fieldset>
+snippet form
+	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="${3:utf-8}">
+		${4}
+	</form>
+snippet h1
+	<h1 id="${1:heading}">${2:$1}</h1>
+snippet inputtext
+	<input type="${1:text}" id="${2}" name="${3}">
+snippet inputbutton
+	<input type="${1:button}" id="${2}" name="${3}" value="${4}">
+snippet inputtext'
+	<input type='${1:text}' id='${2}' name='${3}'>
+snippet inputbutton'
+	<input type="${1:button}" id="${2}" name="${3}" value="${4}">
+snippet label
+	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
+snippet link
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()`>${4}
+snippet mailto
+	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
+snippet meta
+	<meta name="${1:name}" content="${2:content}"`Close()`>${3}
+snippet opt 
+	<option value="${1:option}">${2:$1}</option>${3}
+snippet optt
+	<option>${1:option}</option>${2}
+snippet select
+	<select name="${1:some_name}" id="${2:$1}">
+		<option value="${3:option}">${4:$3}</option>
+		${5}
+	</select>${6}
+snippet table
+	<table border="${1:0}">
+		<tr><th>${2:Header}</th></tr>
+		<tr><th>${3:Data}</th></tr>
+	</table>${4}
+snippet textarea
+	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+
+snippet crazyHtml
+	<!DOCTYPE HTML>
+	<html>
+		<head>
+			<link rel="stylesheet" href="${1:/css/meek.css}" type="text/css"  charset="utf-8">
+			<title></title>
+		</head>
+		<body>
+			${4}
+		</body>
+	</html>
+	<script src="${2}.js" type="text/javascript" charset="utf-8"></script>
+	<script language="javascript" charset="${3:utf-8}">
+		${5}
+	</script>
+##################javascript Begin################
+# Prototype
+snippet proto
+	${1:class_name}.prototype.${2:method_name} =
+	function(${3:first_argument}) {
+		${4:// body...}
+	};
+# Function
+snippet :fun
+	function ${1:function_name} (${2:argument}) {
+		${3:// body...}
+	}
+# Anonymous Function
+snippet :f
+	function(${1}) { ${2} };
+# Object Method
+snippet :of
+	${1:method_name}: function(${2:attribute}) {
+		${4}
+	}${3:,}
+# if
+snippet if 
+	if (${1:true}) {${2}}
+# just if
+snippet ifj 
+	if (${1:true})
+	{
+		${2}
+	}
+# if ... else one line
+snippet ifs
+	if (${1:true}) {${2}} else {${3}};
+#iff 
+snippet iff
+	if (${1:true})
+	{
+		${2}
+	}
+	else 
+	{
+		${3}
+	};
+# tertiary conditional
+# tertiary conditional
+snippet ?:
+	${1:/* condition */} ? ${2:a} : ${3:b};
+# switch
+snippet switch
+	switch(${1:expression}) {
+		case '${3:case}':
+			${4:// code}
+			break;
+		${5}
+		default:
+			${2:// code}
+	}
+# case
+snippet case
+	case '${1:case}':
+		${2:// code}
+		break;
+	${3}
+# for (...) {...} (Improved Native For-Loop)
+snippet for
+	for (var ${1:i} = 0,len=${2};$2<len; $1${3:--}) {
+		${4:$1[$2]}
+	};
+# while (...) {...}
+snippet wh
+	while (${1:/* condition */}) {
+		${2:/* code */}
+	}
+# do...while
+snippet do
+	do {
+		${2:/* code */}
+	} while (${1:/* condition */});
+
+# setTimeout function
+snippet timeout
+	setTimeout(function() {${2}}, ${1:300});
+# Get Elements
+snippet getTag
+	document.body.getElementsByTagName('${1}')${2:;}
+# Get Element
+snippet getId
+	document.body.getElementById('${1}')${2:;}
+#console.log 
+snippet log
+	console.log(${1:data});
+snippet alt 
+	alert(${1:data});
+##################meekojs Begin################# 
+snippet ajax
+	new $.get("${1:../ajax_api/ajax_api.asp?api=}","",{
+			onSuccess:function(data){
+				${2}
+		},onError:function(e){alert(e)}})
+#################javascript End##################
+

@@ -1,0 +1,149 @@
+se fc
+se fs=on
+colo ywgx
+se maxitems=3
+"___________________________________________________________________________
+no  <F2> :tr<SPACE>
+ino <F2> :tr<SPACE>
+no  <F4> :ss<SPACE>
+ino <F4> :ss<SPACE>
+"___________________________________________________________________________
+no = +
+no p P
+no P p
+no c F
+no s H
+no x L
+no i gi
+no l gt
+no h gT
+no e ]]
+no w [[
+no j 6j
+no k 6k
+no J <C-f>
+no K <C-b>
+no v <F11>
+ino jj <ESC>
+ino kk <ESC>
+no z0 :res<CR>
+no gj :tr<SPACE>
+no gk :ss<SPACE>
+no ]- :se um<CR>
+no ]= :se noum<CR>
+no [] :se enc=UTF-8<CR>
+no ][ :se enc=GB2312<CR>
+no [= :se gui=all nofs<CR>
+no [0 :se gui=none fs=on<CR>
+no [- :se gui=tabs,bookmarks<CR>
+no z1 :hi Hint font-family:Sans;font-size:20px;font-weight:bold;color:#ffffff; background-color:rgba(0, 0, 0, 0.5);border:solid 1px LightGray<CR>
+no z2 :hi Hint font-family:monospace;font-size:8pt;font-weight:bold;color:#ffffff;background-color:rgba(0,0,0,0.5);padding:0px 1px;border:1px solid #242721<CR>
+no z3 :hi Hint font-size:24px;font-weight:bold<CR>
+no ge :o javascript:(function(){%20document.location.href='http://translate.google.com.hk/translate?hl=zh-CN&sl=en&tl=zh-CN&u='+escape(document.location.href)%20})();<CR>
+no gl :o javascript:(function(){%20document.location.href='http://translate.google.com.hk/translate?hl=zh-CN&sl=ja&tl=zh-CN&u='+escape(document.location.href)%20})();<CR>
+"___________________________________________________________________________
+nm<Leader>a :dialog addons<CR>
+nm<Leader>b :copy<SPACE>
+nm<Leader>c :dialog cleardata<CR>
+nm<Leader>d :dialog downloads<CR>
+nm<Leader>e :pref!<CR>
+nm<Leader>f :history<SPACE><TAB>
+nm<Leader>t :echo new Date().toLocaleString()<CR>
+nm<Leader>r :res<CR>
+nm<Leader>x :xall<CR>
+nm<Leader>q :qall<CR>
+nm<Leader>s :stop<CR>
+nm<Leader>u :undo<SPACE>
+nm<Leader>p :pref<CR>
+nm<Leader>5 :autoreload 5<CR>
+nm<Leader>9 :autoreload 1000<CR>
+"___________________________________________________________________________
+js<<EOM
+commands.addUserCommand(
+  ['sitesearch','ss'],'Search in this site',
+  function(word) {
+	liberator.open("http://www.google.com.hk/search?hl=zh-CN&q="+encodeURIComponent(word)+"+site%3A"+window.content.location.hostname);
+  }
+);
+EOM
+com! ds -nargs=* tabopen http://dict.cn/<args>
+com! bs -nargs=* tabopen http://dict.baidu.com/s?wd=<args>
+com! ys -nargs=* tabopen http://dict.youdao.com/search?q=<args>
+com! gs -nargs=* tabopen http://www.google.com.hk/search?9&q=<args>
+com! ge -nargs=* tabopen http://translate.google.cn/translate_t?prev=hp&hl=zh-CN&js=y&text=<args>
+no S   :exe ":ge "+content.getSelection()<CR>
+no g1  :exe ":gs "+content.getSelection()<CR>
+no g2  :exe ":bs "+content.getSelection()<CR>
+no g3  :exe ":ys "+content.getSelection()<CR>
+no g4  :exe ":ds "+content.getSelection()<CR>
+"___________________________________________________________________________
+"se! browser.tabs.closeButtons=0
+"se! browser.download.dir="~/Desktop"
+"se! browser.fullscreen.autohide=false
+"se! network.http.pipelining.maxrequests=8
+"se! browser.startup.homepage=http://hao123.com
+"se! browser.display.background_color=#CCE8CF
+"se! browser.download.manager.closeWhenDone=true
+"se! ui.submenuDelay=0
+"se! content.maxtextrun=8191
+"se! content.notify.ontimer=true
+"se! network.http.pipelining=true
+"se! browser.urlbar.autofill=true
+"se! nglayout.initialpaint.delay=0
+"se! browser.download.folderList=0
+"se! content.notify.backoffcount=5
+"se! security.dialog_enable_delay=0
+"se! browser.history_expire_days=10
+"se! content.interrupt.parsing=true
+"se! content.notify.interval=750000
+"se! content.switch.threshold=750000
+"se! browser.history_expire_sites=40
+"se! browser.bookmarks.max_backups=1
+"se! network.http.max-connections=96
+"se! network.http.request.timeout=300
+"se! browser.history_expire_days_min=7
+"se! browser.sessionstore.enabled=false
+"se! network.http.proxy.pipelining=true
+"se! javascript.options.jit.chrome=true
+"se! content.max.tokenizing.time=2250000
+"se! javascript.options.jit.content=true
+"se! browser.cache.memory.capacity=32768
+"se! urlclassifier.updatecachemax=20971520
+"se! network.http.max-connections-per-server=32
+"se! browser.tabs.showSingleWindowModePrefs=true
+"se! network.http.max-persistent-connections-per-proxy=8
+"se! network.http.max-persistent-connections-per-server=4
+"___________________________________________________________________________
+no 01 :o http://mozilla.com.cn<CR>
+no 02 :o http://www.apple.com.cn<CR>
+no 03 :o http://intel.com<CR>
+no 04 :o http://42qu.com<CR>
+no 05 :o http://www.weiphone.com<CR>
+no 06 :o http://mirrors.163.com<CR>
+no 0a :o http://aqee.net<CR>
+no 0b :o http://bit.ly<CR>
+no 0c :o http://svn.coderepos.org/share/lang/javascript/vimperator-plugins/trunk<CR>
+no 0d :o http://dict.cnki.net<CR>
+no 0e :o http://edyfox.codecarver.org<CR>
+no 0f :o http://i.g-fox.cn<CR>
+no 0g :o http://directory.google.com<CR>
+no 0h :o http://get.adobe.com/cn/flashplayer<CR>
+no 0i :o https://github.com/vimpr/vimperator-plugins<CR>
+no 0j :o http://vimperator.org<CR>
+no 0k :o http://fxr.watson.org<CR>
+no 0l :o http://tieba.baidu.com/f?kw=linux&fr=wwwt<CR>
+no 0m :o http://mp3.sogou.com<CR>
+no 0n :o http://bbs.neupioneer.com<CR>
+no 0o :o http://g.mozest.com<CR>
+no 0p :o http://tool-download.vicp.net<CR>
+no 0q :o http://youbest.cublog.cn<CR>
+no 0r :o http://www.rememberthemilk.com<CR>
+no 0s :o http://www.w3school.com.cn<CR>
+no 0t :o http://thinkbbs.zol.com.cn<CR>
+no 0u :o http://www.uzbl.org<CR>
+no 0v :o http://blogsearch.google.com.hk<CR>
+no 0w :o http://wulujia.com<CR>
+no 0x :o http://www.xynbnb.com<CR>
+no 0y :o http://wwww.chinapy.org<CR>
+no 0z :o http://www.tcm361.com<CR>
+no ,, :o http://www.baidu.com<CR>
